@@ -1,0 +1,10 @@
+<h2>Ingredients List</h2>
+<ul>
+    <li *ngFor="let ingredient of ingredients">
+        <button type="button" class="btn btn-outline-secondary" (click)="editIngredient(ingredient)">Edit</button>
+        {{ingredient.id}} - {{ingredient.name}}
+    </li>
+</ul>
+
+<!-- Just put here for now, eventually routing will take care of this -->
+<ingredient-edit [ingredient]="selectedIngredient"></ingredient-edit>
