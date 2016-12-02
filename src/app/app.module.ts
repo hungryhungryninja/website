@@ -8,14 +8,14 @@ import { ButtonsModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { IngredientService } from './ingredients/ingredient.service'; 
 
 import { AppComponent } from './app.component';
-import { IngredientComponent } from './ingredients/ingredient.component';
+import { IngredientFormComponent } from './ingredients/ingredient-form.component';
 import { IngredientListComponent } from './ingredients/ingredient-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IngredientComponent,
+    IngredientFormComponent,
     IngredientListComponent
   ],
   imports: [
