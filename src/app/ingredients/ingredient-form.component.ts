@@ -25,23 +25,18 @@ export class IngredientFormComponent implements OnInit {
     }
 
     onSubmit(form) {
-        console.dir(form);
-        console.log("Im saved! New Name: "+form.value.name);
         this.ingredient.name = form.value.name;
         this.submitted = true;
         
-        //create new ingredient
         this.ingredientService.add(this.ingredient)
             .subscribe((isSuccessful: boolean) => {
-                console.dir(`Added from service? ${isSuccessful}`);
+                this.goToIngredients();
             });
     
-        this.gotoIngredients();
     }
 
-    private gotoIngredients() {
+    private goToIngredients() {
         this.router.navigate(['/ingredient']);
     }
-
 
 }

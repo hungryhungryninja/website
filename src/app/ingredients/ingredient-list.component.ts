@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IIngredient, Ingredient } from "./ingredient";
 import { IngredientService } from "./ingredient.service";
 
@@ -11,34 +12,30 @@ export class IngredientListComponent implements OnInit {
     ingredient: any;
     isPersisted: boolean;
 
-    constructor(private ingredientService: IngredientService) { }
+    constructor(
+        private ingredientService: IngredientService,
+        private router: Router) { }
 
     ngOnInit() {
         this.getIngredients();
     }
 
     getIngredients(){
-        //this.ingredients = this.ingredientService.getIngredients();
         this.ingredientService.getIngredients()
             .subscribe(
                 ingredients => this.ingredients = ingredients
             );
     }
 
-    editIngredient(ingredient) {
-        console.log("selected "+ingredient.name);
-        this.ingredient = ingredient;
-        this.isPersisted = true;
-    }
-
     delete(ingredient){
         this.ingredientService.delete(ingredient)
-            .subscribe();
+            .subscribe((isSuccessful: boolean) => {
+                this.goToIngredients();
+            });
     }
 
-    add(){
-        let newIngredient = {name: ''};
-        this.ingredient = new Ingredient(newIngredient);
-        this.isPersisted = false;
+    private goToIngredients() {
+        this.router.navigate(['/ingredient']);
     }
+
 }
