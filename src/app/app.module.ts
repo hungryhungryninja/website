@@ -18,13 +18,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { IngredientComponent } from './ingredients/ingredient.component';
 
-
-
-
 import { routing,
          appRoutingProviders } from './app.routes';
 
 
+import { Auth } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -34,7 +32,12 @@ import { routing,
     IngredientListComponent,
     IngredientFormComponent
   ],
-  
+  providers: [
+        appRoutingProviders,
+        AUTH_PROVIDERS,
+        Auth,
+       IngredientService
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -43,11 +46,6 @@ import { routing,
     ButtonsModule,
     //InMemoryWebApiModule.forRoot(IngredientData, {delay: 100,  rootPath: 'api/'})
     routing
-  ],
-  providers: [
-        appRoutingProviders,
-        AUTH_PROVIDERS,
-        IngredientService
   ],
   bootstrap: [AppComponent]
 })
