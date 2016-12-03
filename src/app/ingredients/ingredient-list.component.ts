@@ -31,8 +31,13 @@ export class IngredientListComponent implements OnInit {
         this.isPersisted = true;
     }
 
+    delete(ingredient){
+        this.ingredientService.delete(ingredient)
+            .subscribe();
+    }
+
     add(){
-        let newIngredient = {id: null, name: ''};
+        let newIngredient = {name: ''};
         this.ingredient = new Ingredient(newIngredient);
         this.isPersisted = false;
     }

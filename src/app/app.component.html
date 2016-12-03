@@ -1,5 +1,13 @@
-<h1>{{title}}</h1>
-<br>
-<button type="button" class="btn btn-primary">Ingredients</button>
-<ingredient-list></ingredient-list>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">{{title}}</a>
+      <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
+      <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+    </div>
+  </div>
+</nav>
 
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
