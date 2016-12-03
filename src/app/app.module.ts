@@ -12,11 +12,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
 import { IngredientComponent } from './ingredients/ingredient.component';
 
+
+
 import { routing,
          appRoutingProviders } from './app.routes';
 
 import { IngredientFormComponent } from './ingredients/ingredient-form.component';
 import { IngredientListComponent } from './ingredients/ingredient-list.component';
+
+import { RecipesComponent } from './recipes/recipes.component';
+import { RecipeComponent } from './recipes/recipe.component';
+import { RecipeListComponent } from './recipes/recipe-list.component';
 
 import { Auth } from './auth.service'
 
@@ -25,6 +31,9 @@ import { Auth } from './auth.service'
     AppComponent,
     HomeComponent,
     IngredientComponent,
+    RecipesComponent,
+    RecipeComponent,
+    RecipeListComponent,
     IngredientFormComponent,
     IngredientListComponent
   ],
