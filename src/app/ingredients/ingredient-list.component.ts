@@ -30,7 +30,8 @@ export class IngredientListComponent implements OnInit {
     delete(ingredient){
         this.ingredientService.delete(ingredient)
             .subscribe((isSuccessful: boolean) => {
-                this.goToIngredients();
+                //this.goToIngredients();
+                this.getIngredients();//ghetto refresh list
             });
     }
 
