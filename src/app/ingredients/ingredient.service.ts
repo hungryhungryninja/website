@@ -12,19 +12,18 @@ export class IngredientService {
 
     private headers: Headers;
 
-    private ingredientsUrl = 'api/ingredients';
+    private apiURL = 'https://w3j6l1eiu5.execute-api.us-west-2.amazonaws.com/test';
 
     constructor(private http: Http) { 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Content-Type', 'Access-Control-Allow-Headers');//Ehhh for CORS stuff?
-        //this.headers.append('Autho')
     }
 
     getIngredients(): Observable<Ingredient[]>{
         return this.http
                     //.get(this.ingredientsUrl, {headers: this.headers})
-                    .get('https://w3j6l1eiu5.execute-api.us-west-2.amazonaws.com/test/ingredient', {headers: this.headers})
+                    .get(`${this.apiURL}/ingredient`, {headers: this.headers})
                     .map((response: Response) => {
                         console.dir(response);
                         return <Ingredient[]>response.json();
@@ -33,8 +32,7 @@ export class IngredientService {
     }
 
     delete(ingredient: Ingredient){
-        const url = `${this.ingredientsUrl}/${ingredient.name}`;
-        return this.http.put(url , {headers: this.headers})
+        return this.http.put(`${this.apiURL}/${ingredient.name}` , {headers: this.headers})
                     .map((response: Response) => {
                         console.dir(response);
                         return response.json();
@@ -43,7 +41,7 @@ export class IngredientService {
     }
 
     add(ingredient): Observable<boolean>{
-        return this.http.post('https://w3j6l1eiu5.execute-api.us-west-2.amazonaws.com/test/ingredient', JSON.stringify(ingredient), {headers: this.headers})
+        return this.http.post(`${this.apiURL}/ingredient`, JSON.stringify(ingredient), {headers: this.headers})
                     .map((response: Response) => {
                         console.log("Created?");
                         console.dir(response);
