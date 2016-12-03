@@ -18,6 +18,7 @@ import { routing,
 import { IngredientFormComponent } from './ingredients/ingredient-form.component';
 import { IngredientListComponent } from './ingredients/ingredient-list.component';
 
+import { Auth } from './auth.service'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,12 @@ import { IngredientListComponent } from './ingredients/ingredient-list.component
     IngredientFormComponent,
     IngredientListComponent
   ],
-  
+  providers: [
+        appRoutingProviders,
+        AUTH_PROVIDERS,
+        Auth,
+       IngredientService
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -35,11 +41,6 @@ import { IngredientListComponent } from './ingredients/ingredient-list.component
     AlertModule,
     ButtonsModule,
     routing
-  ],
-  providers: [
-        appRoutingProviders,
-        AUTH_PROVIDERS,
-       IngredientService
   ],
   bootstrap: [AppComponent]
 })

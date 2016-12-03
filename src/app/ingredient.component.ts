@@ -1,4 +1,5 @@
 import { Component }  from '@angular/core';
+import { Auth }       from './auth.service';
 
 @Component({
   selector: 'ingredient',
@@ -9,6 +10,6 @@ import { Component }  from '@angular/core';
 })
 
 export class IngredientComponent {
-  constructor() {}
+  constructor(private auth: Auth) {}
 };
 

@@ -7,16 +7,35 @@ import { myConfig }        from './auth.config';
 declare var Auth0Lock: any;
 
 @Injectable()
-export class Auth {
+  export class Auth {
 
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {});
+  userProfile: any;
 
   constructor(private router: Router) {
-    // Add callback for lock `authenticated` event
+    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+
     this.lock.on('authenticated', (authResult) => {
-      localStorage.setItem('id_token', authResult.idToken);
-      this.router.navigate(['/ingredient']);
+        localStorage.setItem('id_token', authResult.idToken);
+
+        this.lock.getProfile(authResult.idToken, (error, profile) => {
+          if (error) {
+            // Handle error
+            alert(error);
+            return;
+        }
+        localStorage.setItem('profile', JSON.stringify(profile));
+        this.userProfile = profile;
+
+        var redirectUrl: string = localStorage.getItem('redirect_url');
+        if(redirectUrl != undefined){
+          this.router.navigate([redirectUrl]);
+          localStorage.removeItem('redirect_url');
+        } else {
+          this.router.navigate(['ingredient']);
+        }
+      });
     });
   }
 
@@ -34,7 +53,9 @@ export class Auth {
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
-    this.router.navigate(['/']);
+    localStorage.removeItem('profile');
+    this.userProfile = undefined;
+    this.router.navigate(['']);
   };
 }
 
