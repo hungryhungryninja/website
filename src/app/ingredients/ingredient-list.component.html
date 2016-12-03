@@ -1,4 +1,5 @@
 <h2>Ingredients List</h2>
+<button class="btn btn-primary" (click)="add()">Add</button>
 <ul>
     <li *ngFor="let ingredient of ingredients">
         <button type="button" class="btn btn-outline-secondary" (click)="editIngredient(ingredient)">Edit</button>
@@ -7,4 +8,4 @@
 </ul>
 
 <!-- Just put here for now, eventually routing will take care of this -->
-<ingredient-form [ingredient]="selectedIngredient"></ingredient-form>
+<ingredient [ingredient]="ingredient" [isPersisted]="isPersisted" ></ingredient>

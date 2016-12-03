@@ -5,17 +5,21 @@ import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ButtonsModule } from 'ng2-bootstrap/ng2-bootstrap';
 
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { IngredientData }  from './data/ingredient-data';
+
 import { IngredientService } from './ingredients/ingredient.service'; 
 
 import { AppComponent } from './app.component';
-import { IngredientFormComponent } from './ingredients/ingredient-form.component';
+import { IngredientComponent } from './ingredients/ingredient.component';
 import { IngredientListComponent } from './ingredients/ingredient-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    IngredientFormComponent,
+    IngredientComponent,
     IngredientListComponent
   ],
   imports: [
@@ -23,7 +27,8 @@ import { IngredientListComponent } from './ingredients/ingredient-list.component
     FormsModule,
     HttpModule,
     AlertModule,
-    ButtonsModule
+    ButtonsModule//,
+    //InMemoryWebApiModule.forRoot(IngredientData, {delay: 100,  rootPath: 'api/'})
   ],
   providers: [IngredientService],
   bootstrap: [AppComponent]
