@@ -9,7 +9,9 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { IngredientService } from './ingredients/ingredient.service'; 
 
 import { AppComponent } from './app.component';
-import { HomeComponent }       from './home.component';
+import { HomeComponent } from './home.component';
+import { IngredientComponent } from './ingredient.component';
+
 import { routing,
          appRoutingProviders } from './app.routes';
 
@@ -21,6 +23,7 @@ import { IngredientListComponent } from './ingredients/ingredient-list.component
   declarations: [
     AppComponent,
     HomeComponent,
+    IngredientComponent,
     IngredientFormComponent,
     IngredientListComponent
   ],
