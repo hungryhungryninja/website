@@ -1,11 +1,8 @@
 <h2>Ingredients List</h2>
-<button class="btn btn-primary" (click)="add()">Add</button>
+<a href="" [routerLink]="['/ingredient/add']"><button class="btn btn-primary">Add</button></a>
 <ul>
     <li *ngFor="let ingredient of ingredients">
         <button type="button" class="btn btn-outline-secondary" (click)="delete(ingredient)">Delete</button>
         {{ingredient.name}}
     </li>
 </ul>
-
-<!-- Just put here for now, eventually routing will take care of this -->
-<ingredient-form [ingredient]="ingredient" [isPersisted]="isPersisted" ></ingredient-form>

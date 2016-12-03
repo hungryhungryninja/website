@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth }       from '../auth.service';
 
-import { Ingredient } from './ingredient';
+import { Ingredient, IIngredient } from './ingredient';
 import { IngredientService } from "./ingredient.service";
 
 @Component({
@@ -9,15 +10,19 @@ import { IngredientService } from "./ingredient.service";
     templateUrl: 'ingredient-form.component.html'
 })
 export class IngredientFormComponent implements OnInit {
-    @Input() ingredient: Ingredient;
-    @Input() isPersisted: boolean; //May not need isPersisted after submitting to API
+
     submitted = false;
+    ingredient: Ingredient;
 
     constructor(
+        private auth: Auth,
         private ingredientService: IngredientService,
         private router: Router) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        let emptyIngredient: IIngredient = {name: ""};
+        this.ingredient = new Ingredient(emptyIngredient);
+    }
 
     onSubmit(form) {
         console.dir(form);

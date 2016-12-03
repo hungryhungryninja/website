@@ -1,14 +1,11 @@
-<div *ngIf="ingredient">
-    <h3>Ingredient</h3>
+<h3>Add An Ingredient!</h3>
 
-    <alert [hidden]="!submitted" type="success">Saved</alert>
-    <form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
-        Form Data: {{ form.value | json }}
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" [ngModel]="ingredient.name" />
-        </div>
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-
-<div>
+<alert [hidden]="!submitted" type="success">Saved</alert>
+<form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
+    Form Data: {{ form.value | json }}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" [ngModel]="ingredient.name" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
