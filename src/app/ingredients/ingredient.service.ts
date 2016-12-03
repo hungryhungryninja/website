@@ -32,10 +32,10 @@ export class IngredientService {
     }
 
     delete(ingredient: Ingredient){
-        return this.http.put(`${this.apiURL}/${ingredient.name}` , {headers: this.headers})
+        let encodedName = encodeURIComponent(ingredient.name);
+        return this.http.delete(`${this.apiURL}/ingredient/${encodedName}` , {headers: this.headers})
                     .map((response: Response) => {
-                        console.dir(response);
-                        return response.json();
+                        return this.isSuccessStatusCode(response.status);
                     })
                     .catch(this.handleError);
     }
