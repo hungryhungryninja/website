@@ -10,7 +10,7 @@ import { IngredientService } from './ingredients/ingredient.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home.component';
-import { IngredientComponent } from './ingredient.component';
+import { IngredientComponent } from './ingredients/ingredient.component';
 
 import { routing,
          appRoutingProviders } from './app.routes';

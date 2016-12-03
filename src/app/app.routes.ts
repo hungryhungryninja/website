@@ -2,7 +2,7 @@ import { ModuleWithProviders }         from '@angular/core';
 import { Routes, RouterModule }        from '@angular/router';
 
 import { HomeComponent }               from './home.component';
-import { IngredientComponent }         from './ingredient.component';
+import { IngredientComponent }         from './ingredients/ingredient.component';
 import { AuthGuard }                   from './auth.guard';
 
 const appRoutes: Routes = [
