@@ -4,7 +4,6 @@ import { Auth }       from '../auth.service';
 @Component({
   selector: 'ingredient',
   template: `
-    <button type="button" class="btn btn-primary">Ingredients</button>
     <ingredient-list></ingredient-list>
   `
 })
