@@ -1,12 +1,28 @@
 <h3>Create/Update a Recipe</h3>
-
-<alert [hidden]="!submitted" type="success">Saved</alert>
-<form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
-    Form Data: {{ form.value | json }}
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" [ngModel]="recipe.name" />
-    </div>
-    <input type="hidden" [ngModule]="recipe.id"/>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+<div *ngIf="recipe" >
+    <alert [hidden]="!submitted" type="success">Saved</alert>
+    <form novalidate (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" [ngModel]="recipe.name"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Cook Time:</label>
+            <input type="text" class="form-control" id="cookTime" name="cookTime" [ngModel]="recipe.cookTime"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Prep Time:</label>
+            <input type="text" class="form-control" id="prepTime" name="prepTime" [ngModel]="recipe.prepTime"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Category:</label>
+            <input type="text" class="form-control" id="recipeCategory" name="recipeCategory" [ngModel]="recipe.recipeCategory"/>
+        </div>
+        <div class="form-group">
+            <label for="name">Cuisine:</label>
+            <input type="text" class="form-control" id="recipeCuisine" name="recipeCuisine" [ngModel]="recipe.recipeCuisine"/>
+        </div>
+        <input type="hidden" name="id" [ngModel]="recipe.id" />
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>

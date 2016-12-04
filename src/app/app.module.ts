@@ -8,7 +8,7 @@ import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { IngredientData }  from './data/ingredient-data';
+import { RecipeData }  from './data/recipe-data';
 
 import { IngredientService } from './ingredients/ingredient.service'; 
 import { IngredientListComponent } from './ingredients/ingredient-list.component';
@@ -21,6 +21,7 @@ import { IngredientComponent } from './ingredients/ingredient.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeComponent } from './recipes/recipe.component';
 import { RecipeListComponent } from './recipes/recipe-list.component';
+import { RecipeService } from './recipes/recipe.service';
 
 import { routing,
          appRoutingProviders } from './app.routes';
@@ -41,10 +42,11 @@ import { Auth } from './auth.service'
     IngredientFormComponent
   ],
   providers: [
-        appRoutingProviders,
-        AUTH_PROVIDERS,
-        Auth,
-       IngredientService
+    appRoutingProviders,
+    AUTH_PROVIDERS,
+    Auth,
+    IngredientService,
+    RecipeService   
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { Auth } from './auth.service'
     HttpModule,
     AlertModule,
     ButtonsModule,
-    //InMemoryWebApiModule.forRoot(IngredientData, {delay: 100,  rootPath: 'api/'})
+    InMemoryWebApiModule.forRoot(RecipeData, {delay: 100,  rootPath: 'api/', passThruUnknownUrl: true }),
     routing
   ],
   bootstrap: [AppComponent]

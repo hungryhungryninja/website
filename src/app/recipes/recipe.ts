@@ -19,22 +19,35 @@ export class RecipeIngredient{
 } ;
 
 export interface IRecipe {
-    id:  number;
+    id:  string;
     name: string;
     cookTime: string;
     prepTime: string;
+    cookingMethod: string;
     recipeCategory: string;
     recipeCuisine: string;
-    ingredients: RecipeIngredient[];
+    //ingredients: RecipeIngredient[];
+    //instructions: string[];
 };
 
-export class Recipe implements IRecipe{
-    id: number;
+export class Recipe{
+    id: string;
     name: string;
     cookTime: string;
     prepTime: string;
+    cookingMethod: string;
     recipeCategory: string;
     recipeCuisine: string;
-    ingredients: RecipeIngredient[];
-    instructions: string[];
+    //ingredients: RecipeIngredient[];
+    //instructions: string[];
+
+    constructor(options: IRecipe){
+        this.id = options.id;
+        this.name = options.name;
+        this.cookTime = options.cookTime;
+        this.prepTime = options.prepTime;
+        this.cookingMethod = options.cookingMethod;
+        this.recipeCategory = options.recipeCategory;
+        this.recipeCuisine = options.recipeCuisine;
+    }
 }

@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let recipe of recipes">
+        <button class="btn btn-secondary" [routerLink]="['/recipes', recipe.id]">View</button>
+        {{recipe.id}} - {{recipe.name}}
+    </li>
+</ul>
